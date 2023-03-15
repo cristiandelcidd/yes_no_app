@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'package:yes_no_app/domain/entities/message.dart';
+
 class FriendMessageBubble extends StatelessWidget {
-  const FriendMessageBubble({super.key});
+  final Message friendMessage;
+
+  const FriendMessageBubble({super.key, required this.friendMessage});
 
   @override
   Widget build(BuildContext context) {
@@ -13,21 +17,17 @@ class FriendMessageBubble extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
               color: colors.secondary, borderRadius: BorderRadius.circular(20)),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Text(
-              'Hola Mundo',
-              style: TextStyle(color: Colors.white),
+              friendMessage.text,
+              style: const TextStyle(color: Colors.white),
             ),
           ),
         ),
-        const SizedBox(
-          height: 5,
-        ),
+        const SizedBox(height: 5),
         _ImageBubble(),
-        const SizedBox(
-          height: 10,
-        )
+        const SizedBox(height: 10)
       ],
     );
   }
